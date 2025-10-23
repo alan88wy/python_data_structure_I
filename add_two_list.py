@@ -90,16 +90,24 @@ class Solution:
 
         return slow
     
-    def remove_duplicates(self, head: ListNode) -> ListNode:
+    def remove_duplicates_no_set(self, head: ListNode) -> ListNode:
+        
         current = head
+        
+        while current is not None:
+            
+            runner = current
+            
+            while runner is not None and runner.next is not None:
+            
+                if current.val == runner.next.val:
+                    runner.next = runner.next.next
+                else:   
+                    runner = runner.next
+                    
+            current = current.next
 
-        while current is not None and current.next is not None:
-            if current.val == current.next.val:
-                current.next = current.next.next
-            else:
-                current = current.next
-
-        return head
+        return True
 
 
 def create_LinkList(l) -> ListNode:
@@ -128,5 +136,5 @@ print("Middle Node ->", c.val)
 d = a.check_loop(b)
 print("Has Loop ->", d)
 
-a.remove_duplicates(b)
+a.remove_duplicates_no_set(b)
 a.display(b)
