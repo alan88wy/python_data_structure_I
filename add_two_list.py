@@ -1,9 +1,11 @@
 # Definition for singly-linked list.
-'''
+"""
 You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
 
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
-'''
+"""
+from typing import Any
+
 
 class ListNode:
     def __init__(self, val=0, next=None):
@@ -11,7 +13,9 @@ class ListNode:
         self.next = next
 
 class Solution:
-    def addTwoNumbers(self, l1:ListNode, l2:ListNode) -> ListNode:
+    @staticmethod
+    def addTwoNumbers(l1: ListNode,
+                      l2: ListNode) -> ListNode:
 
         head = ListNode(0) # create dummy head
         current = head
@@ -34,7 +38,7 @@ class Solution:
                 l1 = l1.next
 
             if l2 is not None:
-                l2 = l2.next    
+                l2 = l2.next
 
         return head.next
 
@@ -69,7 +73,7 @@ class Solution:
 
         return False
     
-    def k_node_from_end(self, head: ListNode, k: int) -> ListNode:
+    def k_node_from_end(self, head: ListNode, k: int) -> ListNode | None | Any:
         
         if head is None:
             return None
@@ -90,7 +94,7 @@ class Solution:
 
         return slow
     
-    def remove_duplicates_no_set(self, head: ListNode) -> ListNode:
+    def remove_duplicates_no_set(self, head: ListNode) -> bool:
         
         current = head
         

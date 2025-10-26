@@ -126,15 +126,29 @@ class LinkedList:
         print(f"Remove Index {index} -> {removed.value}")
         return removed.value
 
+    # def reverse(self):
+    #     prev = None
+    #     current = self.head
+    #     self.tail = self.head
+    #
+    #     while current:
+    #         next_node = current.next
+    #         current.next = prev
+    #         prev = current
+    #         current = next_node
+    #
+
     def reverse(self):
         prev = None
-        current = self.head
+        temp = self.head
         self.tail = self.head
-        while current:
-            next_node = current.next
-            current.next = prev
-            prev = current
-            current = next_node
+
+        for _ in range(self.length):
+            next_node = temp.next
+            temp.next = prev
+            prev = temp
+            temp = next_node
+
         self.head = prev
         print("Linked List Reversed")
 
