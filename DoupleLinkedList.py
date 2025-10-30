@@ -73,33 +73,96 @@ class DoublyLinkedList:
         self.length -= 1
         return temp
     
-    def remove(self, value)    :
+    def get(self, index):
         
-        print("remove -> ", value)
+        print("get -> ", index)
         
-        if self.length == 0:
+        if index < 0 or index >= self.length:
             return None
         
         current = self.head
         
-        while current is not None:
-            if current.value == value:
-                if current.prev:
-                    current.prev.next = current.next
-                else:
-                    self.head = current.next
-                    
-                if current.next:
-                    current.next.prev = current.prev
-                else:
-                    self.tail = current.prev
-                self.length -= 1
-                
-                return current
+        if index < self.length // 2:
+            for _ in range(index):
+                current = current.next
+        else:
+            current = self.tail
+            for _ in range(self.length - 1, index, -1):
+                current = current.prev
+
+        return current
+    
+    def insert(self, index, value):
+
+        print("insert -> ", index, value)
+
+        if index < 0 or index > self.length:
+            return False
+
+        if index == 0:
+            return self.prepend(value)
+
+        if index == self.length:
+            return self.append(value)
+
+        before = self.get(index - 1)
+        after = before.next
+        
+        new_node = Node(value)
+        before.next = new_node
+        new_node.prev = before
+        new_node.next = after
+        after.prev = new_node
+
+        self.length += 1
+        
+        return True
+
+    def set(self, index, value):
+
+        print("set -> ", index, value)
+
+        if index < 0 or index >= self.length:
+            return False
+
+        current = self.get(index)
+        
+        if current:
+            current.value = value
+            return True
+        
+        return False
+
+    def remove(self, index):
+
+        print("remove -> ", index)
+
+        if index < 0 or index >= self.length:
+            return False
+
+        current = self.head
+
+        if index == 0:
+            return self.pop()
+        
+        if index == self.length - 1:
+            return self.pop_last()
+
+        current = self.get(index)
+        
+        if current == self.tail:
+            self.tail = self.tail.prev
+            self.tail.next = None
+        else:
+            current.prev.next = current.next
+            current.next.prev = current.prev
+        
+        current.next = None
+        current.prev = None
             
-            current = current.next  
-            
-        return None
+        self.length -= 1
+
+        return True
         
     def prepend(self, value):
         
@@ -268,6 +331,8 @@ def run():
     p = dll.pop()
     dll.print_list()
     p = dll.pop_last()
+    dll.print_list()
+    dll.insert(2, 10)
     dll.print_list()
     dll.remove(4)
     dll.print_list()
