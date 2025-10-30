@@ -8,11 +8,12 @@ The first person to stand in line is also the first who can pay and leave the su
 
 Basic operations we can do on a queue are:
 
-Enqueue: Adds a new element to the queue.
-Dequeue: Removes and returns the first (front) element from the queue.
-Peek: Returns the first element in the queue.
-isEmpty: Checks if the queue is empty.
-Size: Finds the number of elements in the queue.
+1. Enqueue: Adds a new element to the queue.
+2. Dequeue: Removes and returns the first (front) element from the queue.
+3. Peek: Returns the first element in the queue.
+4. isEmpty: Checks if the queue is empty.
+5. Size: Finds the number of elements in the queue.
+
 Queues can be implemented by using arrays or linked lists.
 
 Queues can be used to implement job scheduling for an office printer, order processing 
