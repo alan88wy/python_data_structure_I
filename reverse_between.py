@@ -64,6 +64,7 @@ class LinkedList:
         # 4. Find the node immediately *before* the sublist to be reversed.
         # This will be `pre_node`.
         pre_node = dummy
+        
         for _ in range(m):
             pre_node = pre_node.next
 

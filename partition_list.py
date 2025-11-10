@@ -66,7 +66,8 @@ class LinkedList:
 
         cur = self.head
 
-        for _ in range(self.length):
+        # for _ in range(self.length):
+        while cur:
             next_node = cur.next
             cur.next = None
 
