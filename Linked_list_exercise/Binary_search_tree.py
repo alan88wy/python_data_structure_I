@@ -14,16 +14,23 @@ class BinarySearchTree:
         else:
             self._insert_rec(self.root, key)
 
+    # Insert a new node with the given key
     def _insert_rec(self, root, key):
+        # Recursive helper function to insert a new node
         if key < root.val:
+            # Go to the left subtree
+            # If left child is None, insert here
             if root.left is None:
                 root.left = Node(key)
             else:
+                # Recur on the left subtree
                 self._insert_rec(root.left, key)
+        # Go to the right subtree
         else:
             if root.right is None:
                 root.right = Node(key)
             else:
+                # Recur on the right subtree
                 self._insert_rec(root.right, key)
 
     def inorder_traversal(self, root):
@@ -45,8 +52,13 @@ class BinarySearchTree:
     def _search_rec(self, root, key):
         if root is None or root.val == key:
             return root
+        
+        # Key is smaller than root's key
         if key < root.val:
+            # Recur on the left subtree
             return self._search_rec(root.left, key)
+        
+        # Key is greater than root's key
         return self._search_rec(root.right, key)
     
     # Delete a node with the given key
@@ -58,10 +70,13 @@ class BinarySearchTree:
         if root is None:
             return root
         if key < root.val:
+            # Recur on the left subtree
             root.left = self._delete_rec(root.left, key)
         elif key > root.val:
+            # Recur on the right subtree
             root.right = self._delete_rec(root.right, key)
         else:
+            # Node with only one child or no child
             if root.left is None:
                 return root.right
             elif root.right is None:
@@ -70,7 +85,11 @@ class BinarySearchTree:
             # Node with two children: Get the inorder successor 
             # (smallest in the right subtree)
             temp = self._min_value_node(root.right)
+            
+            # Copy the inorder successor's content to this node
             root.val = temp.val
+            
+            # Delete the inorder successor
             root.right = self._delete_rec(root.right, temp.val)
             
         return root
@@ -79,6 +98,7 @@ class BinarySearchTree:
     def _min_value_node(self, node):
         current = node
         
+        # Loop down to find the leftmost leaf
         while current.left is not None:
             current = current.left
             
