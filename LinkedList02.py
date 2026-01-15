@@ -5,6 +5,63 @@ class Node:
 
 
 class LinkedList:
+    """
+    LinkedList - A singly linked list implementation for managing a collection of nodes.
+    This class provides a complete implementation of a singly linked list with operations
+    to insert, remove, retrieve, and manipulate elements.
+    Attributes:
+        head (Node): Reference to the first node in the linked list.
+        tail (Node): Reference to the last node in the linked list.
+        length (int): The total number of nodes currently in the linked list.
+    Methods:
+        __init__(value):
+            Initializes a new LinkedList with a single node containing the given value.
+            Sets both head and tail to point to this node, and length to 1.
+        add(value):
+            Appends a new node with the given value to the end of the linked list.
+            Updates the tail pointer and increments length.
+            Time Complexity: O(1)
+        pop_first():
+            Removes and returns the value of the first node (head) in the linked list.
+            Handles edge cases when the list is empty or has only one node.
+            Updates head and length accordingly.
+            Time Complexity: O(1)
+        pop_last():
+            Removes and returns the value of the last node (tail) in the linked list.
+            Traverses to find the second-to-last node and updates tail pointer.
+            Handles edge cases when the list is empty or has only one node.
+            Time Complexity: O(n)
+        prepend(value):
+            Inserts a new node with the given value at the beginning of the linked list.
+            Updates the head pointer and increments length.
+            Time Complexity: O(1)
+        get(index):
+            Retrieves the node at the specified index (0-based).
+            Returns None if index is out of bounds.
+            Time Complexity: O(n)
+        set_value(index, value):
+            Updates the value of the node at the specified index.
+            Returns True if successful, False if index is out of bounds.
+            Time Complexity: O(n)
+        insert(index, value):
+            Inserts a new node with the given value at the specified index.
+            Handles special cases: prepend at index 0, append at end.
+            Returns True if successful, False if index is out of bounds.
+            Time Complexity: O(n)
+        remove(index):
+            Removes and returns the value of the node at the specified index.
+            Handles special cases: remove first, remove last.
+            Returns None if index is out of bounds.
+            Time Complexity: O(n)
+        reverse():
+            Reverses the entire linked list in-place by redirecting all node pointers.
+            Swaps head and tail references after reversal.
+            Time Complexity: O(n)
+        display():
+            Prints the current linked list as a list representation to the console.
+            Useful for visualization and debugging.
+            Time Complexity: O(n)
+    """
     def __init__(self, value):
         new_node = Node(value)
         self.head = new_node
